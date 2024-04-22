@@ -55,8 +55,6 @@ def main():
     page_source = driver.page_source
 
 
-
-
     #with open("dataX.json", "w") as d:
     #    d.write(page_source)
 
