@@ -18,6 +18,7 @@ def get_data(url)-> list:
     data = driver.page_source
 
     driver.quit()
+    
 
     return data
 
@@ -49,13 +50,13 @@ def main():
     # Odeslání formuláře
     password_field.submit()
 
-    # Počkejte, až se načte stránka po přihlášení
-    #WebDriverWait(driver, 10).until(
-    #    EC.presence_of_element_located((By.XPATH, "//body"))
-    #)
-
+ 
     # Získání HTML obsahu stránky po přihlášení
     page_source = driver.page_source
+
+
+    #with open("dataX.json", "w") as d:
+    #    d.write(page_source)
 
     print (page_source)
 
