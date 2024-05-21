@@ -18,10 +18,10 @@ def get_data(url, driver)-> list:
 
     page_source = driver.page_source
 
-    soup = BeautifulSoup(page_source, 'html.parser')
-    td_elements = soup.find_all('td', class_='left-align')
-    data = [td.get_text(strip=True) for td in td_elements]
-    #data = page_source
+    #soup = BeautifulSoup(page_source, 'html.parser')
+    #td_elements = soup.find_all('td', class_='left-align')
+    #data = [td.get_text(strip=True) for td in td_elements]
+    data = page_source
     #driver.quit()
     
 

@@ -8,21 +8,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import requests
-from bs4 import BeautifulSoup
-
-
 def get_data(url, driver)-> list:
     
     driver.get(url)
 
-    page_source = driver.page_source
+    data = driver.page_source
 
-    soup = BeautifulSoup(page_source, 'html.parser')
-    td_elements = soup.find_all('td', class_='left-align')
-    data = [td.get_text(strip=True) for td in td_elements]
-    #data = page_source
-    #driver.quit()
+    driver.quit()
     
 
     return data
@@ -75,18 +67,21 @@ def main():
     complete_urls = user_id(base_url_start, base_url_end, driver)
 
     User_data = []
-    for url in complete_urls:#Pro každou adresu v listu complete_urls vyvolá funkci get_data
+    for url in complete_urls:
         data = get_data(url, driver)
         User_data.append(data)
+    #data = get_data(link2, driver)
+ 
+    # Získání HTML obsahu stránky po přihlášení
     
     print(User_data)
 
-    #Zapíše výsledek do souboru dataX.json
+
     with open("dataX.json", "w") as vysledek:
-        vysledek.write(str(User_data))
+        vysledek.write(User_data)
 
     #print (page_source)
-    driver.quit()
+
 
 if __name__ == '__main__':
     main()

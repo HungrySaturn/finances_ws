@@ -8,21 +8,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-import requests
-from bs4 import BeautifulSoup
-
-
 def get_data(url, driver)-> list:
     
     driver.get(url)
 
-    page_source = driver.page_source
+    data = driver.page_source
 
-    soup = BeautifulSoup(page_source, 'html.parser')
-    td_elements = soup.find_all('td', class_='left-align')
-    data = [td.get_text(strip=True) for td in td_elements]
-    #data = page_source
-    #driver.quit()
+    driver.quit()
     
 
     return data
@@ -86,7 +78,7 @@ def main():
         vysledek.write(str(User_data))
 
     #print (page_source)
-    driver.quit()
+
 
 if __name__ == '__main__':
     main()
