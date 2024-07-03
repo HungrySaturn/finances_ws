@@ -1,8 +1,6 @@
 # finances_ws
-
 web scraping
 
-# Projects
 ## PyPI
 [package-link](https://pypi.org/project/finaces-ws/)
 pip install finaces-ws
